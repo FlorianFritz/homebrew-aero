@@ -16,10 +16,12 @@ class Openvsp < Formula
   depends_on "glm"
   depends_on "glew"
   depends_on "libxml2"
+  depends_on "python"
+  depends_on "swig"
   
   def install
     ENV.deparallelize  # if your formula fails when building in parallel
-    system "cmake", "-S", "./Libraries", "-B", "build_libs", *std_cmake_args,
+    system "cmake", "-S", "#{buildpath}/Libraries", "-B", "build_libs", *std_cmake_args,
                     "-DVSP_USE_SYSTEM_LIBXML2=true",
                     "-DVSP_USE_SYSTEM_FLTK=true",
                     "-DVSP_USE_SYSTEM_GLM=true",
@@ -30,9 +32,8 @@ class Openvsp < Formula
                     "-DVSP_USE_SYSTEM_CODEELI=false"
     system "cmake", "--build", "build_libs"
 
-    system "cmake", "-S", "./src", "-B", "build_vsp", *std_cmake_args,
+    system "cmake", "-S", "#{buildpath}/src", "-B", "build_vsp", *std_cmake_args,
                     "-DVSP_LIBRARY_PATH=#{buildpath}/build_libs"
-                                                      
                                                       
     system "cmake", "--build", "build_vsp"
     system "cmake", "--install", "build_vsp"
