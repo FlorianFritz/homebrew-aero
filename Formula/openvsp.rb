@@ -32,7 +32,6 @@ class Openvsp < Formula
 
     system "cmake", "-S", "./src", "-B", "build_vsp", *std_cmake_args,
                     "-DVSP_LIBRARY_PATH=#{buildpath}/build_libs"
-                                                      # "-DVSP_LIBRARY_PATH=$(pwd)/build_libs"
                                                       
                                                       
     system "cmake", "--build", "build_vsp"
