@@ -37,6 +37,20 @@ class Openvsp < Formula
                                                       
     system "cmake", "--build", "build_vsp"
     system "cmake", "--install", "build_vsp"
+
+    [
+      "vsp",
+      "vspaero",
+      "vspaero_adjoint",
+      "vspaero_complex",
+      "vspaero_opt",
+      "vsploads",
+      "vspscript",
+      "vspviewer",
+    ].each do |name|
+      #(HOMEBREW_PREFIX/"bin").install_symlink name
+      bin.install_symlink (prefix/"#{name}").realpath => name
+    end
   end
 
   test do
