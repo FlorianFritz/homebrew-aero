@@ -1,8 +1,8 @@
 class Openvsp < Formula
   desc "Open Vehicle Sketch Pad is a parametric aircraft geometry tool"
   homepage "https://openvsp.org"
-  url "https://github.com/OpenVSP/OpenVSP/archive/refs/tags/OpenVSP_3.35.3.tar.gz"
-  sha256 "e08827bd8848ba75fc7466bcec399aa785683335e81c0e24773b0bf0e68de216"
+  url "https://github.com/OpenVSP/OpenVSP/archive/refs/tags/OpenVSP_3.36.0.tar.gz"
+  sha256 "e568bba08e91bb9c6400848a3c3df206a892463f9e0385c6fda3b00ac51fd25c"
   license "NASA-1.3"
 
   depends_on "cmake" => :build
