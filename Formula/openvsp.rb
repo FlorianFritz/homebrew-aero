@@ -14,6 +14,12 @@ class Openvsp < Formula
   depends_on "python"
   depends_on "swig"
 
+  on_macos do
+    # Missing header include fl_ask
+    # Upstream Issue is filed: https://github.com/OpenVSP/OpenVSP/issues/282
+    patch :DATA
+  end
+
   def install
     ENV.deparallelize # formula fails when building in parallel
     system "cmake", "-S", "#{buildpath}/Libraries", "-B", "build_libs", *std_cmake_args,
@@ -42,3 +48,17 @@ class Openvsp < Formula
     system "#{prefix}/vsp", "--help"
   end
 end
+
+__END__
+diff --git a/src/gui_and_draw/AdvLinkScreen.h b/src/gui_and_draw/AdvLinkScreen.h
+index 932e052..814afe5 100644
+--- a/src/gui_and_draw/AdvLinkScreen.h
++++ b/src/gui_and_draw/AdvLinkScreen.h
+@@ -15,6 +15,7 @@
+ #include "GuiDevice.h"
+ 
+ #include <FL/Fl.H>
++#include <FL/Fl_ask.H>
+ #include <FL/Fl_Text_Buffer.H>
+ 
+ using std::string;
