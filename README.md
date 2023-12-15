@@ -3,7 +3,7 @@ Homebrew tap for aerospace related software
 
 ## List of formulas
 
-- [openvsp](Formula/openvsp.rb): [https://openvsp.org](https://openvsp.org) Version 3.35.3
+- [openvsp](Formula/openvsp.rb): [https://openvsp.org](https://openvsp.org) Version 3.36.0
 
 ## How do I install these formulae?
 
